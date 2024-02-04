@@ -11,7 +11,7 @@ public class Program {
     }
 
     public static String asBinaryString(int input) {
-        // 205 -> "11001101"
+        // 205 -> "11001101".
 
         String result = "";
         while (input > 0) {
@@ -27,7 +27,7 @@ public class Program {
     }
 
     public static int asInteger(String input) {
-        // "11001101"
+        // "11001101".
 
         int result = 0;
         String reversed = reverse(input);
@@ -57,6 +57,7 @@ public class Program {
     }
 
     private static String reverse(String input) {
+        // String reversal method.
         String reversed = "";
         for (int i = 0; i < input.length(); i++) {
             reversed += input.charAt(input.length() - 1 - i);
