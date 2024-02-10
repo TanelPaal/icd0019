@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ruleset name="Favorites"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <description>icd0019 ruleset</description>
+
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="ShortVariable" />
+        <exclude name="LongVariable" />
+        <exclude name="MethodArgumentCouldBeFinal" />
+        <exclude name="LocalVariableCouldBeFinal" />
+        <exclude name="AtLeastOneConstructor" />
+        <exclude name="ShortClassName" />
+        <exclude name="OnlyOneReturn" />
+        <exclude name="UseUnderscoresInNumericLiterals" />
+        <exclude name="UnnecessaryLocalBeforeReturn" />
+        <exclude name="TooManyStaticImports" />
+        <exclude name="CallSuperInConstructor" />
+        <exclude name="CommentDefaultAccessModifier" />
+        <exclude name="DefaultPackage" />
+        <exclude name="ConfusingTernary" />
+        <exclude name="UseDiamondOperator" />
+        <exclude name="UnnecessaryFullyQualifiedName" />
+        <exclude name="LinguisticNaming" />
+        <exclude name="FieldDeclarationsShouldBeAtStartOfClass" />
+        <exclude name="UnnecessaryImport" />
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/ClassNamingConventions">
+        <properties>
+            <property name="classPattern" value="[A-Z][a-zA-Z0-9]*" />
+            <property name="testClassPattern" value="[A-Z][a-zA-Z0-9]*" />
+            <property name="abstractClassPattern" value="[A-Z][a-zA-Z0-9]*" />
+            <property name="interfacePattern" value="[A-Z][a-zA-Z0-9]*" />
+            <property name="enumPattern" value="[A-Z][a-zA-Z0-9]*" />
+            <property name="utilityClassPattern" value="([A-Z][a-zA-Z0-9]*)" />
+        </properties>
+    </rule>
+
+
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="JUnitAssertionsShouldIncludeMessage" />
+        <exclude name="AvoidReassigningParameters" />
+        <exclude name="JUnitTestContainsTooManyAsserts" />
+        <exclude name="UnusedFormalParameter" />
+        <exclude name="GuardLogStatement" />
+        <exclude name="SystemPrintln" />
+        <exclude name="UseVarargs" />
+        <exclude name="JUnitTestsShouldIncludeAssert" />
+        <exclude name="SimplifiableTestAssertion" />
+        <exclude name="LooseCoupling" />
+        <exclude name="UseTryWithResources" />
+        <exclude name="PreserveStackTrace" />
+        <exclude name="ArrayIsStoredDirectly" />
+        <exclude name="UseAssertEqualsInsteadOfAssertTrue" />
+        <exclude name="UseAssertSameInsteadOfAssertTrue" />
+        <exclude name="PositionLiteralsFirstInComparisons" />
+        <exclude name="OneDeclarationPerLine" />
+        <exclude name="UnusedImports" />
+        <exclude name="LiteralsFirstInComparisons" />
+        <exclude name="JUnit4TestShouldUseTestAnnotation" />
+        <exclude name="AvoidStringBufferField" />
+        <exclude name="MethodReturnsInternalArray" />
+        <exclude name="UnusedPrivateMethod" />
+        <!-- false positive with parameters declared with var -->
+    </rule>
+
+    <rule ref="category/java/design.xml" >
+        <exclude name="ImmutableField" />
+        <exclude name="LawOfDemeter" />
+        <exclude name="DataClass" />
+        <exclude name="UseUtilityClass" />
+        <exclude name="AvoidThrowingRawExceptionTypes" />
+        <exclude name="AvoidCatchingGenericException" />
+        <exclude name="LoosePackageCoupling" />
+        <exclude name="SignatureDeclareThrowsException" />
+        <exclude name="TooManyMethods" />
+        <exclude name="SingularField" />
+        <exclude name="GodClass" />
+    </rule>
+
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="classReportLevel" value="120" />
+            <property name="methodReportLevel" value="25" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml/CognitiveComplexity">
+        <properties>
+            <property name="reportLevel" value="20" />
+        </properties>
+    </rule>
+
+</ruleset>
