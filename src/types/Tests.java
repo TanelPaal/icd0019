@@ -40,6 +40,13 @@ public class Tests {
     }
 
     @Test
+    public void createsStringFromArray() {
+        assertThat(Code.asString(new int[] { 1, 3, -2, 9 }), is("1, 3, -2, 9"));
+
+        assertThat(Code.asString(new int[] { }), is(""));
+    }
+
+    @Test
     public void findsModeFromCharactersInString() {
         assertThat("abcb", Code.mode("abcb"), is('b'));
         assertThat("abccbc", Code.mode("abccbc"), is('c'));
@@ -56,13 +63,6 @@ public class Tests {
         assertThat(Code.squareDigits("a22b"), is("a44b"));
 
         assertThat(Code.squareDigits("a9b2"), is("a81b4"));
-    }
-
-    @Test
-    public void createsStringFromArray() {
-        assertThat(Code.asString(new int[] { 1, 3, -2, 9 }), is("1, 3, -2, 9"));
-
-        assertThat(Code.asString(new int[] { }), is(""));
     }
 
     @Test

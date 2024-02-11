@@ -6,7 +6,15 @@
         <option value="$PROJECT_DIR$/../../jee/icd0011tests/pmd/ruleset.xml" />
         <option value="$PROJECT_DIR$/../icd0019material/pmd/ruleset.xml" />
         <option value="$PROJECT_DIR$/../../jee/hwtests/pmd/ruleset.xml" />
+        <option value="C:\Users\ptan0\icd0019\pmd-rules.xml" />
       </list>
+    </option>
+    <option name="options">
+      <map>
+        <entry key="Statistics URL" value="" />
+        <entry key="Target JDK" value="17" />
+        <entry key="Threads" value="1" />
+      </map>
     </option>
     <option name="skipTestSources" value="false" />
   </component>
