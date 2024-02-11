@@ -97,11 +97,11 @@ public class Code {
         }
 
         int maxCount = 0;
-        char mode = input.charAt(0);
-        for (int i = 0; i < charCountArray.length; i++) {
+        Character mode = input.charAt(0);
+        for (Character i = 0; i < charCountArray.length; i++) {
             if (charCountArray[i] > maxCount) {
                 maxCount = charCountArray[i];
-                mode = (char) i;
+                mode = i;
             }
         }
 
