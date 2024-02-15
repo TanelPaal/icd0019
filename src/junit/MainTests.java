@@ -11,23 +11,39 @@ public class MainTests {
     @Test
     public void findsSpecialNumbers() {
         assertTrue(Code.isSpecial(0));
-
-        // other test cases for isSpecial() method
-    }
-
-    @Test
-    public void findsLongestStreak() {
-        assertThat(Code.longestStreak(""), is(0));
-
-        // other test cases for longestStreak() method
+        assertTrue(Code.isSpecial(1));
+        assertTrue(Code.isSpecial(2));
+        assertTrue(Code.isSpecial(3));
+        assertFalse(Code.isSpecial(4)); // 4 % 11 = 4
     }
 
     @Test
     public void findsModeFromCharactersInString() {
 
         assertThat(Code.mode(null), is(nullValue()));
+        assertThat(Code.mode(""), is(nullValue()));
+        assertThat(Code.mode("a"), is('a'));
+        assertThat(Code.mode("abcb"), is('b'));
+        assertThat(Code.mode("cbbc"), is('c'));
+    }
 
-        // other test cases for mode() method
+    @Test
+    public void findGetCharacterCount() {
+        assertThat(Code.getCharacterCount("a", 'a'), is(1));
+        assertThat(Code.getCharacterCount("ab", 'a'), is(1));
+        assertThat(Code.getCharacterCount("abb", 'b'), is(2));
+        assertThat(Code.getCharacterCount("ab", 'c'), is(0));
+        assertThat(Code.getCharacterCount("Aba", 'a'), is(1));
+        assertThat(Code.getCharacterCount("", 'a'), is(not(1)));
+    }
+
+    @Test
+    public void findsLongestStreak() {
+        assertThat(Code.longestStreak(null), is(0));
+        assertThat(Code.longestStreak(""), is(0));
+        assertThat(Code.longestStreak("a"), is(1));
+        assertThat(Code.longestStreak("abbcccaaaad"), is(4));
+        assertThat(Code.longestStreak("abbcccaaaa"), is(4));
     }
 
     @Test

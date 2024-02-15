@@ -11,7 +11,7 @@ public class MyAssertEqualsTests {
         myAssertEquals(1, 1);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = AssertionError.class) // this test is expected to fail.
     public void testsPrimitiveEqualityFailure() {
         myAssertEquals(1, 2);
     }
@@ -21,7 +21,7 @@ public class MyAssertEqualsTests {
         myAssertEquals(200L, 200L);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = AssertionError.class) // this test is expected to fail.
     public void testsObjectEqualityFailure() {
         myAssertEquals(100L, 200L);
     }
@@ -69,10 +69,32 @@ public class MyAssertEqualsTests {
     }
 
     public void myAssertEquals(Long expected, Long actual) {
-        throw new AssertionError("not implemented yet");
+        if (expected.equals(actual)) {
+            return;
+        }
+
+        String message = "%s is not equal to %s"
+                .formatted(actual, expected);
+        throw new AssertionError(message);
     }
 
     public void myAssertEquals(int[] expected, int[] actual) {
-        throw new AssertionError("not implemented yet");
+        if (Arrays.equals(expected, actual)) {
+            return;
+        }
+        // Arrays.equals() compares the values of two arrays.
+
+        String message = "%s is not equal to %s"
+                .formatted(Arrays.toString(expected), Arrays.toString(actual));
+        // Arrays.toString() converts an array to a string.
+        throw new AssertionError(message);
     }
+    // Another solution
+    //if (expected.length != actual.length) {
+    //    throw new AssertionError(message);
+    //}
+    //for (int i = 0; i < expected.length; i++) {
+    //    if (expected[i] != actual[i]) {
+    //        throw new AssertionError(message);
+    //    }
 }
