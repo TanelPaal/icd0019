@@ -65,13 +65,48 @@ public class Code {
         return maxStreakLength;
     }
 
+    public static int[] copyArray(int[] source, int length) {
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = source[i];
+        }
+        return result;
+    }
+    // Got inspiration/help from https://www.geeksforgeeks.org/array-copy-in-java/ .
 
     public static int[] removeDuplicates(int[] integers) {
-        return null;
+        if (integers == null) {
+            return null;
+        }
+
+        int[] uniqueIntegers = new int[integers.length];
+        int uniqueCount = 0;
+
+        for (int integer : integers) {
+            // Check if integer is a duplicate.
+            boolean isDuplicate = false;
+            // Iterate through uniqueIntegers to check for duplicates.
+            for (int j = 0; j < uniqueCount; j++) {
+                if (integer == uniqueIntegers[j]) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            // If not duplicate, add to uniqueIntegers and increment uniqueCount.
+            if (!isDuplicate) {
+                uniqueIntegers[uniqueCount++] = integer;
+            }
+        }
+        return copyArray(uniqueIntegers, uniqueCount);
     }
 
     public static int sumIgnoringDuplicates(int[] integers) {
-        return 0;
+        int[] uniqueIntegers = removeDuplicates(integers);
+        int sum = 0;
+        for (int integer : uniqueIntegers) {
+            sum += integer;
+        }
+        return sum;
     }
 
 }
