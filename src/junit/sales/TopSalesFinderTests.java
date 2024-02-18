@@ -6,6 +6,7 @@ import java.util.Random;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertTrue;
 
 public class TopSalesFinderTests {
 
@@ -115,5 +116,21 @@ public class TopSalesFinderTests {
         }
 
         return records;
+    }
+    @Test
+    public void testArraySizeDecrease() {
+        TopSalesFinder tsf = new TopSalesFinder();
+
+        // Add and remove sales records multiple times.
+        for (int i = 0; i < 10000; i++) {
+            tsf.registerSale(new SalesRecord("p1", 20, 1));
+            tsf.removeSalesRecordsFor("p1");
+        }
+
+        // Check the size of the array after adding and removing the records.
+        int sizeAfter = tsf.getArrayLength();
+
+        // The size of the array should be less than or equal to the initial size.
+        assertTrue(sizeAfter <= 10);
     }
 }
