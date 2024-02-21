@@ -10,6 +10,12 @@ import static org.junit.Assert.assertFalse;
 public class EqualityTests {
 
     @Test
+    public void testsToString() {
+
+        System.out.println(new Point(1, 2));
+    }
+
+    @Test
     public void testsEquality() {
 
         assertFalse(new Point(1, 2) == new Point(1, 2));
