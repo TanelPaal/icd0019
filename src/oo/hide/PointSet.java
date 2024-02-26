@@ -21,15 +21,20 @@ public class PointSet {
         if (contains(point)) {
             return;
         }
-        // If the array is full, create new array with double the capacity and copy the old array to the new array.
+        // If the array is full, resize it.
         if (pointCount == pointArray.length) {
-            Point[] newPoints = new Point[pointArray.length * 2];
-            System.arraycopy(pointArray, 0, newPoints, 0, pointArray.length);
-            pointArray = newPoints;
+            resizeArray();
         }
         // Add the point to the array and increment the count.
         pointArray[pointCount++] = point;
 
+    }
+
+    // Helper function to resize the array when it's full.
+    private void resizeArray() {
+        Point[] newPoints = new Point[pointArray.length * 2];
+        System.arraycopy(pointArray, 0, newPoints, 0, pointArray.length);
+        pointArray = newPoints;
     }
 
     // Method to return the number of points in the set.
@@ -39,12 +44,17 @@ public class PointSet {
 
     // Method to check if a point is in the set.
     public boolean contains(Point point) {
+        return findPointIndex(point) != -1;
+    }
+
+    // Helper function to find the index of a point in the array.
+    private int findPointIndex(Point point) {
         for (int i = 0; i < pointCount; i++) {
             if (pointArray[i] == null ? point == null : pointArray[i].equals(point)) {
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
     // Method to return a string representation of the set.
@@ -102,12 +112,15 @@ public class PointSet {
 
     // Method to remove a point from the set.
     public void remove(Point point) {
-        for (int i = 0; i < pointCount; i++) {
-            if (pointArray[i] == null ? point == null : pointArray[i].equals(point)) {
-                System.arraycopy(pointArray, i + 1, pointArray, i, pointCount - i - 1);
-                pointCount--;
-                return;
-            }
+        int index = findPointIndex(point);
+        if (index != -1) {
+            removeAtIndex(index);
         }
+    }
+
+    // Helper function to remove a point at a specific index.
+    private void removeAtIndex(int index) {
+        System.arraycopy(pointArray, index + 1, pointArray, index, pointCount - index - 1);
+        pointCount--;
     }
 }
