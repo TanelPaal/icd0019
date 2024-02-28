@@ -1,0 +1,131 @@
+null
+üks
+kaks
+kolm
+neli
+viis
+kuus
+seitse
+kaheksa
+üheksa
+kümme
+üksteist
+kaksteist
+kolmteist
+neliteist
+viisteist
+kuusteist
+seitseteist
+kaheksateist
+üheksateist
+kakskümmend
+kakskümmend üks
+kakskümmend kaks
+kakskümmend kolm
+kakskümmend neli
+kakskümmend viis
+kakskümmend kuus
+kakskümmend seitse
+kakskümmend kaheksa
+kakskümmend üheksa
+kolmkümmend
+kolmkümmend üks
+kolmkümmend kaks
+kolmkümmend kolm
+kolmkümmend neli
+kolmkümmend viis
+kolmkümmend kuus
+kolmkümmend seitse
+kolmkümmend kaheksa
+kolmkümmend üheksa
+nelikümmend
+nelikümmend üks
+nelikümmend kaks
+nelikümmend kolm
+nelikümmend neli
+nelikümmend viis
+nelikümmend kuus
+nelikümmend seitse
+nelikümmend kaheksa
+nelikümmend üheksa
+viiskümmend
+viiskümmend üks
+viiskümmend kaks
+viiskümmend kolm
+viiskümmend neli
+viiskümmend viis
+viiskümmend kuus
+viiskümmend seitse
+viiskümmend kaheksa
+viiskümmend üheksa
+kuuskümmend
+kuuskümmend üks
+kuuskümmend kaks
+kuuskümmend kolm
+kuuskümmend neli
+kuuskümmend viis
+kuuskümmend kuus
+kuuskümmend seitse
+kuuskümmend kaheksa
+kuuskümmend üheksa
+seitsekümmend
+seitsekümmend üks
+seitsekümmend kaks
+seitsekümmend kolm
+seitsekümmend neli
+seitsekümmend viis
+seitsekümmend kuus
+seitsekümmend seitse
+seitsekümmend kaheksa
+seitsekümmend üheksa
+kaheksakümmend
+kaheksakümmend üks
+kaheksakümmend kaks
+kaheksakümmend kolm
+kaheksakümmend neli
+kaheksakümmend viis
+kaheksakümmend kuus
+kaheksakümmend seitse
+kaheksakümmend kaheksa
+kaheksakümmend üheksa
+üheksakümmend
+üheksakümmend üks
+üheksakümmend kaks
+üheksakümmend kolm
+üheksakümmend neli
+üheksakümmend viis
+üheksakümmend kuus
+üheksakümmend seitse
+üheksakümmend kaheksa
+üheksakümmend üheksa
+ükssada
+ükssada üks
+ükssada kaks
+ükssada kolm
+ükssada neli
+ükssada viis
+ükssada kuus
+ükssada seitse
+ükssada kaheksa
+ükssada üheksa
+ükssada kümme
+ükssada üksteist
+ükssada kaksteist
+ükssada kolmteist
+ükssada neliteist
+ükssada viisteist
+ükssada kuusteist
+ükssada seitseteist
+ükssada kaheksateist
+ükssada üheksateist
+ükssada kakskümmend
+ükssada kakskümmend üks
+ükssada kakskümmend kaks
+ükssada kakskümmend kolm
+ükssada kakskümmend neli
+ükssada kakskümmend viis
+ükssada kakskümmend kuus
+ükssada kakskümmend seitse
+ükssada kakskümmend kaheksa
+ükssada kakskümmend üheksa
+ükssada kolmkümmend

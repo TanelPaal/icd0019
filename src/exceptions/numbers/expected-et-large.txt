@@ -1,0 +1,7 @@
+1000=üks tuhat
+2321=kaks tuhat kolmsada kakskümmend üks
+654000=kuussada viiskümmend neli tuhat
+1000000=üks miljon
+2000432=kaks miljonit nelisada kolmkümmend kaks
+9634000=üheksa miljonit kuussada kolmkümmend neli tuhat
+1000000000=üks miljard
