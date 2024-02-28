@@ -36,16 +36,25 @@ public class NumberConverter {
             if (number >= 0 && number <= 9) {
                 String result = onesWordGenerator(number);
                 return result;
-            }
-
-            // Check for a direct translation for 10-99.
-            if (number >= 10 && number <= 99) {
+            }else if (number >= 10 && number <= 99) {
+                // Check for a direct translation for 10-99.
                 String result = tensWordGenerator(number);
                 return result;
-            }
-            // Check for a direct translation for 100-999.
-            if (number >= 100 && number <= 999) {
+            }else if (number >= 100 && number <= 999) {
+                // Check for a direct translation for 100-999.
                 String result = hundredsWordGenerator(number);
+                return result;
+            } else if (number >= 1000 && number <= 999999) {
+                // Check for a direct translation for thousands.
+                String result = thousandsWordGenerator(number);
+                return result;
+            }else if (number >= 1000000 && number <= 999999999) {
+                // Check for a direct translation for millions.
+                String result = millionsWordGenerator(number);
+                return result;
+            }else if (number >= 1000000000 && number <= 999999999999L) {
+                // Check for direct translation for billions.
+                String result = billionsWordGenerator(number);
                 return result;
             }
             // If a translation for a component is missing, throw an exception
@@ -136,6 +145,62 @@ public class NumberConverter {
             if (hundredsWord != null && hundredWord != null && beforeDelimiter != null && afterDelimiter != null) {
                 String remainingWord = remaining == 0 ? "" : numberInWords(remaining);
                 return hundredsWord + beforeDelimiter + hundredWord + (remainingWord.isEmpty() ? "" : afterDelimiter + remainingWord);
+            }
+        }
+        throw new MissingTranslationException(String.valueOf(number));
+    }
+
+    private String thousandsWordGenerator(int number) {
+        int thousands = number / 1000; // Get the thousands component.
+        int remaining = number % 1000; // Get the remaining component.
+
+        // Check for a direct translation for thousands.
+        if (thousands > 0) {
+            String thousandsWord = numberInWords(thousands);
+            String thousandWord = properties.getProperty("thousand");
+            String beforeDelimiter = properties.getProperty("thousand-before-delimiter");
+            String afterDelimiter = properties.getProperty("thousand-after-delimiter");
+            if (thousandsWord != null && thousandWord != null && beforeDelimiter != null && afterDelimiter != null) {
+                String remainingWord = remaining == 0 ? "" : numberInWords(remaining);
+                return thousandsWord + beforeDelimiter + thousandWord + (remainingWord.isEmpty() ? "" : afterDelimiter + remainingWord);
+            }
+        }
+        throw new MissingTranslationException(String.valueOf(number));
+    }
+
+    private String millionsWordGenerator(int number) {
+        int millions = number / 1000000; // Get the millions component.
+        int remaining = number % 1000000; // Get the remaining component.
+
+        // Check for a direct translation for millions.
+        if (millions > 0) {
+            String millionsWord = numberInWords(millions);
+            String millionWord = millions == 1 ? properties.getProperty("million-singular") : properties.getProperty("million-plural");
+            String beforeDelimiter = properties.getProperty("million-before-delimiter");
+            String afterDelimiter = properties.getProperty("million-after-delimiter");
+
+            if (millionsWord != null && millionWord != null && beforeDelimiter != null && afterDelimiter != null) {
+                String remainingWord = remaining == 0 ? "" : numberInWords(remaining);
+                return millionsWord + beforeDelimiter + millionWord + (remainingWord.isEmpty() ? "" : afterDelimiter + remainingWord);
+            }
+        }
+        throw new MissingTranslationException(String.valueOf(number));
+    }
+
+    private String billionsWordGenerator(int number) {
+        int billions = number / 1000000000; // Get the billions component.
+        int remaining = number % 1000000000; // Get the remaining component.
+
+        // Check for a direct translation for billions.
+        if (billions > 0) {
+            String billionsWord = numberInWords(billions);
+            String billionWord = billions == 1 ? properties.getProperty("billion-singular") : properties.getProperty("billion-plural");
+            String beforeDelimiter = properties.getProperty("billion-before-delimiter");
+            String afterDelimiter = properties.getProperty("billion-after-delimiter");
+
+            if (billionsWord != null && billionWord != null && beforeDelimiter != null && afterDelimiter != null) {
+                String remainingWord = remaining == 0 ? "" : numberInWords(remaining);
+                return billionsWord + beforeDelimiter + billionWord + (remainingWord.isEmpty() ? "" : afterDelimiter + remainingWord);
             }
         }
         throw new MissingTranslationException(String.valueOf(number));
