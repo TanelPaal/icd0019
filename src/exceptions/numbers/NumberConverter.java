@@ -28,7 +28,7 @@ public class NumberConverter {
     }
 
     public String numberInWords(Integer number) {
-        // Check if a direct translation exists for the number
+        // Check if a direct translation exists for the number.
         if (properties.containsKey(String.valueOf(number))) {
             return properties.getProperty(String.valueOf(number));
         } else {
@@ -57,7 +57,7 @@ public class NumberConverter {
                 String result = billionsWordGenerator(number);
                 return result;
             }
-            // If a translation for a component is missing, throw an exception
+            // If a translation for a component is missing, throw an exception.
             throw new MissingTranslationException(String.valueOf(number));
         }
     }
