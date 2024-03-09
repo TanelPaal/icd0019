@@ -7,21 +7,41 @@ public abstract sealed class AbstractSalesAnalyser
             FlatTaxSalesAnalyser,
             TaxFreeSalesAnalyser {
     protected List<SalesRecord> records;
-    protected double sTaxRate = 1.0;
-    protected double rTaxRate = 1.0;
+    protected double sTaxRate = 1.2;
+    protected double rTaxRate = 1.1;
 
+    // Constructor.
     public AbstractSalesAnalyser(List<SalesRecord> records) {
         this.records = records;
     }
 
+    // Abstract methods.
     protected abstract Double getTotalSales();
 
-    protected abstract Double getTotalSalesByProductId(String id);
+    // Concrete methods.
+    protected Double getTotalSalesByProductId(String id) {
+        double totalSales = 0.0;
+        for (SalesRecord record : records) {
+            if (record.getProductId().equals(id)) {
+                totalSales += calculateSales(record);
+            }
+        }
+        return totalSales;
+    }
 
+    // Protected methods
+    protected double getTaxRate() {
+        return sTaxRate;
+    }
 
-    protected double calculateSales(SalesRecord record, double taxRate) {
+    protected double getReducedTaxRate() {
+        return rTaxRate;
+    }
+
+    protected double calculateSales(SalesRecord record) {
+        double taxRate = record.hasReducedRate() ? getReducedTaxRate() : getTaxRate();
         double sales = record.getProductPrice() * record.getItemsSold();
-        return applyTaxRate(sales, taxRate);
+        return sales / taxRate;
     }
 
     protected double calculateTotalSales(List<SalesRecord> records) {
@@ -41,10 +61,6 @@ public abstract sealed class AbstractSalesAnalyser
             }
         }
         return totalSales;
-    }
-
-    protected double applyTaxRate(double totalSales, double taxRate) {
-        return totalSales / taxRate;
     }
 
     protected String getIdOfMostPopularItem() {
