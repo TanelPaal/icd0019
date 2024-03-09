@@ -1,6 +1,7 @@
 package inheritance.analyser;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract sealed class AbstractSalesAnalyser
     permits DifferentiatedTaxSalesAnalyser,
@@ -63,22 +64,29 @@ public abstract sealed class AbstractSalesAnalyser
         return totalSales;
     }
 
-    protected String getIdOfMostPopularItem() {
-        String mostPopularProductID = null;
-        double maxItemsSold = 0;
+    protected List<String> getTop3PopularItems() {
+        List<String> uniqueProductIds = new ArrayList<>();
         for (SalesRecord record : records) {
-            int itemsSold = 0;
-            for (SalesRecord r : records) {
-                if (r.getProductId().equals(record.getProductId())) {
-                    itemsSold += r.getItemsSold();
-                }
-            }
-            if (itemsSold > maxItemsSold) {
-                maxItemsSold = itemsSold;
-                mostPopularProductID = record.getProductId();
+            if (!uniqueProductIds.contains(record.getProductId())) {
+                uniqueProductIds.add(record.getProductId());
             }
         }
-        return mostPopularProductID;
+
+        uniqueProductIds.sort((id1, id2) -> {
+            int totalItemsSold1 = 0;
+            int totalItemsSold2 = 0;
+            for (SalesRecord record : records) {
+                if (record.getProductId().equals(id1)) {
+                    totalItemsSold1 += record.getItemsSold();
+                }
+                if (record.getProductId().equals(id2)) {
+                    totalItemsSold2 += record.getItemsSold();
+                }
+            }
+            return totalItemsSold2 - totalItemsSold1;
+        });
+
+        return uniqueProductIds.subList(0, Math.min(3, uniqueProductIds.size()));
     }
 
     protected String getIdOfItemWithLargestTotalSales() {
@@ -98,4 +106,7 @@ public abstract sealed class AbstractSalesAnalyser
         }
         return productIdWithLargestSales;
     }
+
 }
+
+
