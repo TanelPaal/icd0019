@@ -4,32 +4,30 @@ import java.util.Objects;
 
 public class Point {
 
-    private int x;
-    private int y;
+    private Integer x;
+    private Integer y;
 
-    public Point(int x, int y) {
+    public Point(Integer x, Integer y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
     public String toString() {
-        return String.format("(%d, %d)", x, y);
+        return String.format("(%s, %s)", x, y);
     }
 
     @Override
     public boolean equals(Object obj) {
-        // Check for reference equality.
-        if (this == obj) {
-            return true;
-        }
-        // Check for null or different class.
-        if (obj == null || getClass() != obj.getClass()) {
+        if (!(obj instanceof Point)) {
             return false;
         }
-        // Cast to Point for comparison.
         Point other = (Point) obj;
-        // Compare x and y values.
         return Objects.equals(x, other.x) && Objects.equals(y, other.y);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
