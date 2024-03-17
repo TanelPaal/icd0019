@@ -66,17 +66,13 @@ public class Simulator {
             }
         }
 
-        if (player1Wins == 0 && draws == 0) {
-            return 0.0;
-        }
-
-        return player1Wins / (iterations - draws) * 100;
+        return (player1Wins + 9 * draws) / iterations * 100;
     }
 
     private Hand drawHand(List<Card> deck, int numCards) {
         Hand hand = new Hand();
         for (int i = 0; i < numCards; i++) {
-            hand.addCard(deck.remove(deck.size() - 1));
+            hand.addCard(deck.remove(0));
         }
         return hand;
     }
@@ -87,7 +83,8 @@ public class Simulator {
         communityCards.forEach(sevenCards::add);
 
         List<Hand> possibleHands = getPossibleHands(sevenCards);
-        return Collections.max(possibleHands);
+        possibleHands.sort(Comparator.reverseOrder()); // sort the hands in descending order
+        return possibleHands.get(0); // return the first hand, which is the best hand
     }
 
     private List<Hand> getPossibleHands(List<Card> sevenCards) {
