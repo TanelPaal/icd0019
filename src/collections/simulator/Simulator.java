@@ -66,7 +66,7 @@ public class Simulator {
             }
         }
 
-        return (player1Wins + 9 * draws) / iterations * 100;
+        return (player1Wins + 10 * draws) / iterations * 100;
     }
 
     private Hand drawHand(List<Card> deck, int numCards) {
