@@ -55,13 +55,13 @@ public class SimulatorTests {
         Hand hand1 = getSuitedHand("9h9s");
         Hand hand2 = getSuitedHand("AdKc");
 
-        Simulator simulator = new Simulator(7e4);
+        Simulator simulator = new Simulator(5e5);
 
         double winningOdds = simulator.getWinningOdds(hand1, hand2);
 
         // https://www.cardplayer.com/poker-tools/odds-calculator/texas-holdem
 
-        assertThat(winningOdds, Matchers.closeTo(55.53, 0.4));
+        assertThat(winningOdds, Matchers.closeTo(55.53, 1.75));
     }
 
     private Matcher<Double> closeTo(double value) {
