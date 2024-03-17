@@ -24,7 +24,7 @@ public class Simulator {
 
         Map<HandType, Double> handTypeProbabilities = new HashMap<>();
         for (HandType handType : handTypeCounts.keySet()) {
-            double probability = (double) handTypeCounts.get(handType) / iterations * 100;
+            double probability = handTypeCounts.get(handType) / iterations * 100;
             handTypeProbabilities.put(handType, probability);
         }
 
@@ -66,11 +66,11 @@ public class Simulator {
             }
         }
 
-        // Calculate the total number of games that were not draws
-        double nonDrawGames = iterations - draws;
+        if (player1Wins == 0 && draws == 0) {
+            return 0.0;
+        }
 
-        // Calculate the winning odds based on the number of games won by player 1 out of the total number of non-draw games
-        return (double) player1Wins / nonDrawGames * 100;
+        return player1Wins / (iterations - draws) * 100;
     }
 
     private Hand drawHand(List<Card> deck, int numCards) {
