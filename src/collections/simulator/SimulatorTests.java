@@ -61,7 +61,7 @@ public class SimulatorTests {
 
         // https://www.cardplayer.com/poker-tools/odds-calculator/texas-holdem
 
-        assertThat(winningOdds, Matchers.closeTo(55.53, 1.75));
+        assertThat(winningOdds, Matchers.closeTo(55.53, 0.4));
     }
 
     private Matcher<Double> closeTo(double value) {
