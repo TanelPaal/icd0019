@@ -137,4 +137,6 @@ public class HandTests {
         assertThat(getFlushHand("23567").getHandType(),
                 is(not(HandType.STRAIGHT_FLUSH)));
     }
+
+
 }

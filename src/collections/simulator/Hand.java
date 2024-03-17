@@ -62,7 +62,8 @@ public class Hand implements Iterable<Card>, Comparable<Hand> {
 
         // Special case: Ace can be the highest card in a straight (10, J, Q, K, A)
         // or the lowest (A, 2, 3, 4, 5). Check for the lower straight with Ace.
-        if (sortedValues.get(4) == Card.CardValue.A && sortedValues.get(0) == Card.CardValue.S2 && sortedValues.get(3).ordinal() - sortedValues.get(0).ordinal() == 3) {
+        if (sortedValues.get(4) == Card.CardValue.A && sortedValues.get(0) == Card.CardValue.S2
+                && sortedValues.get(3).ordinal() - sortedValues.get(0).ordinal() == 3) {
             return true;
         }
         return sortedValues.get(4).ordinal() - sortedValues.get(0).ordinal() == 4;
@@ -84,7 +85,6 @@ public class Hand implements Iterable<Card>, Comparable<Hand> {
         return isFlush() && isStraight();
     }
 
-
     public boolean contains(Card card) {
         return cards.contains(card);
     }
@@ -100,6 +100,33 @@ public class Hand implements Iterable<Card>, Comparable<Hand> {
 
     @Override
     public int compareTo(Hand other) {
+        int handTypeComparison = this.getHandType().compareTo(other.getHandType());
+        if (handTypeComparison != 0) {
+            return handTypeComparison;
+        }
+
+        List<Card> thisCardsSorted = new ArrayList<>(this.cards);
+        List<Card> otherCardsSorted = new ArrayList<>(other.cards);
+
+        thisCardsSorted.sort(Comparator.comparing(Card::getValue).reversed());
+        otherCardsSorted.sort(Comparator.comparing(Card::getValue).reversed());
+
+        for (int i = 0; i < thisCardsSorted.size(); i++) {
+            int cardComparison = thisCardsSorted.get(i).getValue().compareTo(otherCardsSorted.get(i).getValue());
+            if (cardComparison != 0) {
+                return cardComparison;
+            }
+        }
+
+        // If the hands have the same values, compare the suits
+        for (int i = 0; i < thisCardsSorted.size(); i++) {
+            int suitComparison = thisCardsSorted.get(i).getSuit().compareTo(otherCardsSorted.get(i).getSuit());
+            if (suitComparison != 0) {
+                return suitComparison;
+            }
+        }
+
         return 0;
     }
+
 }

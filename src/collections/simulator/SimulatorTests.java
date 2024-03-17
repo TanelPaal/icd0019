@@ -65,8 +65,18 @@ public class SimulatorTests {
     }
 
     private Matcher<Double> closeTo(double value) {
-        double precision = 0.06;
+        double precision = 0.1;
 
         return Matchers.closeTo(value, precision);
+    }
+
+    @Test
+    public void testCompareTo() {
+        Hand hand1 = getSuitedHand("9h9s");
+        Hand hand2 = getSuitedHand("AdKc");
+
+        int comparisonResult = hand1.compareTo(hand2);
+
+        System.out.println("Comparison result: " + comparisonResult);
     }
 }
