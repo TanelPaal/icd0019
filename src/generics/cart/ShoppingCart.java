@@ -30,7 +30,7 @@ public class ShoppingCart<T extends CartItem> {
         }
 
         for (Double discount : discounts) {
-            total *= (1 - discount / 100);
+            total *= 1 - discount / 100;
         }
 
         return total;
