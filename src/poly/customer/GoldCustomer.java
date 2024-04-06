@@ -1,5 +1,7 @@
 package poly.customer;
 
+import java.util.Objects;
+
 public final class GoldCustomer extends AbstractCustomer {
 
     public GoldCustomer(String id, String name, int bonusPoints) {
@@ -8,22 +10,26 @@ public final class GoldCustomer extends AbstractCustomer {
 
     @Override
     public void collectBonusPointsFrom(Order order) {
-        throw new RuntimeException("not implemented yet");
+        if (order.getTotal() >= 100){
+            this.bonusPoints += order.getTotal() * 1.5;
+        }
     }
 
     @Override
     public boolean equals(Object obj) {
-        throw new RuntimeException("not implemented yet");
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        return super.equals(obj);
     }
 
     @Override
     public int hashCode() {
-        throw new RuntimeException("not implemented yet");
+        return Objects.hash(super.hashCode());
     }
 
     @Override
     public String asString() {
-        throw new RuntimeException("not implemented yet");
+        return "GOLD;" + id + ";" + name + ";" + bonusPoints + ";";
     }
 
 }
