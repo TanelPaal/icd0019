@@ -1,7 +1,5 @@
 package poly.customer;
 
-import java.util.Objects;
-
 public final class GoldCustomer extends AbstractCustomer {
 
     public GoldCustomer(String id, String name, int bonusPoints) {
