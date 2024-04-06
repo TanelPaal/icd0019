@@ -16,18 +16,6 @@ public final class GoldCustomer extends AbstractCustomer {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode());
-    }
-
-    @Override
     public String asString() {
         return "GOLD;" + id + ";" + name + ";" + bonusPoints + ";";
     }
